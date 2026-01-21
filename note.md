@@ -27,6 +27,6 @@ git中文件状态有：
  
 提交成功后会弹出信息：
 ```
-[当前提交分支 完整SHA-1校验和]
-n file changed, m insertions(+/-)
+[当前提交分支 完整SHA-1校验和],
+n file changed, m insertions(+), k deletion(-)
 ```
