@@ -57,3 +57,26 @@ n file changed, m insertions(+), k deletion(-)
 `git checkout -- <file>` -> 将file还原为上次提交的状态
 
 **注意：** git上几乎所有已提交的内容都是可恢复的，然而未提交的内容删除时需要十分谨慎，因为很可能难以恢复！
+
+
+## 远程仓库的操作
+
+`git remote` -> 查找当前目录的远程仓库服务器
+- 选项`-v`：显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+```
+origin https://github.com/flagqvq123/gitstudy_note.git (fetch)
+origin https://github.com/flagqvq123/gitstudy_note.git (push)
+```
+
+- 简写可以替代url使用
+
+`git remote add <shortname> <url>` -> 添加远程服务器，并且指定一个简写
+`git fetch <remote>` -> 访问远程仓库，拉取其中没有的数据
+- **注意：** 并不会自动合并或修改当前的工作，需要手动添加合并
+
+`git pull` -> 若当前分支设置了追踪远程分支，则可以自动抓取并合并该远程分支到现有分支。
+
+`git push <remote> <branch>` -> 将某分支推送到指定服务器
+- 推送时必须与服务器其他工作相同才能推送。
+
+`git remote show <remote>` -> 列出远程仓库URL、跟踪分支、在本地使用pull、push指令会导致的推送。
