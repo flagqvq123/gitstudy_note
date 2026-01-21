@@ -22,3 +22,11 @@ git中文件状态有：
 
 ### Commit!
 `git commit` -> 呼出commit面板，填写message
+`git commit -m "<message>"` -> 直接填写message并提交
+`git commit -a` -> 将所有已追踪文件暂存并提交（省略add）
+ 
+提交成功后会弹出信息：
+```
+[当前提交分支 完整SHA-1校验和]
+n file changed, m insertions(+/-)
+```
