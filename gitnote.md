@@ -1,5 +1,7 @@
 # Day 1
 
+## 一个基础的git仓库
+
 ### 创建第一个git仓库！
 `git init` -> 在目录下创建.git文件
 `git add <file>` -> 将想要添加的文件放入暂存区
@@ -30,3 +32,28 @@ git中文件状态有：
 [当前提交分支 完整SHA-1校验和],
 n file changed, m insertions(+), k deletion(-)
 ```
+
+### 移除与重命名文件
+`git rm <file>` -> 删除文件
+`git rm --cache <file>` -> 将文件移除出git管理，但不删除
+`git mv <file_from> <file_to>` -> 将文件重命名
+
+### 查看提交历史
+`git log` -> 查看文件的更改历史
+- `-p/-patch`：强调每次提交引入的差异
+- `-2`：显示最近两次提交
+- `--stat`：总结显示
+详见：https://git-scm.com/book/zh/v2/Git-%e5%9f%ba%e7%a1%80-%e6%9f%a5%e7%9c%8b%e6%8f%90%e4%ba%a4%e5%8e%86%e5%8f%b2#pretty_format
+
+### 撤销操作
+##### 重新提交
+
+`git commit --amend` -> 将暂存区提交，并替代上一次提交
+（用于提交后发现有小错误需要更改的情况，能够精简仓库历史）
+
+##### 撤销
+
+`git reset HEAD <file>` -> 取消file的暂存记录
+`git checkout -- <file>` -> 将file还原为上次提交的状态
+
+**注意：** git上几乎所有已提交的内容都是可恢复的，然而未提交的内容删除时需要十分谨慎，因为很可能难以恢复！
