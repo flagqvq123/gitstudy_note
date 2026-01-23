@@ -85,3 +85,32 @@ origin https://github.com/flagqvq123/gitstudy_note.git (push)
 - 注意这个操作也会改变远程跟踪分支前缀
 
 `git remote remove <name>` -> 移除远程仓库
+
+# Day 2
+
+## 打标签
+
+`git tag (-l/-list)` -> 列出当前已有的标签列表
+`git tag -l/-list <通配符查找>` -> 列出符合查找结果的标签列表
+`git show <tagname>` -> 展示tag的信息
+
+### git的标签类型：
+- lightweight 轻量标签：只提供标签的信息。
+- annotated 附注标签： 附注标签是存储在 Git 数据库中的一个完整对象， 它们是可以被校验的，其中包含打标签者的名字、电子邮件地址、日期时间， 此外还有一个标签信息，并且可以使用 GNU Privacy Guard （GPG）签名并验证。
+- 通常会建议创建附注标签，这样你可以拥有以上所有信息。
+
+#### 轻量标签
+`git tag <tagname>` -> 给当前节点打上标签
+#### 附注标签
+`git tag -a <tagname> -m <message>` -> 给当前节点打附注标签，且附上一段信息。（若不加-m，git也会启动编辑器让你输入message
+
+`git tag <tagname> <commit>` -> 给指定提交打标签
+
+### 推送标签
+git在推送时不会把标签自动push。需要显式地推送。
+`git push <remote> <tagname>` -> 把标签推送到远程仓库
+`git push <remote> --tags` -> 推送所有不在远程仓库的标签
+
+### 删除标签
+`git tag -d <tagname>` -> 删除本地标签
+`git push origin --delete <tagname>` -> 删除远程仓库中的某个标签
