@@ -120,3 +120,31 @@ git在推送时不会把标签自动push。需要显式地推送。
 - git的别名是简单的命令替换，用aliname替代后面的command
 - 可以用来给旧命令起别名，也可以用来给组合命令形成新命令：使用`git config --global alias.<aliname> '<commands>'`
 - 对于外部命令的别名，在命令前加入'!'符号，例如`git config --global alias.visual '!gitk'`,这样就可以用`git visual`来执行`gitk`命令了。
+
+`git log --oneline --decorate --graph --all` -> 输出你的提交历史、各个分支的指向以及项目的分支分叉情况。
+`git checkout -b <newbranch>` -> 创建并转到新的分支
+
+`git branch -d <branch>` -> 删除分支
+`git merge <branch>` -> 将目标分支与现有分支合并
+
+### 合并的冲突处理
+`git status` -> 可以查看处于“未合并”(unmerged)状态的文件
+
+出现冲突的文件会包含一些特殊区段，看起来像下面这个样子：
+```
+    <<<<<<< HEAD:index.html
+    <div id="footer">contact : email.support@github.com</div>
+    =======
+    <div id="footer">
+     please contact us at support@github.com
+    </div>
+    >>>>>>> iss53:index.html
+```
+这表示 HEAD 所指示的版本（也就是你的 master 分支所在的位置，因为你在运行 merge 命令的时候已经检出到了这个分支）在这个区段的上半部分（======= 的上半部分），而 iss53 分支所指示的版本在 ======= 的下半部分。 为了解决冲突，你必须选择使用由 ======= 分割的两部分中的一个，或者你也可以自行合并这些内容。
+例如，你可以通过把这段内容换成下面的样子来解决冲突：
+```
+<div id="footer">
+please contact us at email.support@github.com
+</div>
+```
+上述的冲突解决方案仅保留了其中一个分支的修改，并且 <<<<<<< , ======= , 和 >>>>>>> 这些行被完全删除了。 在你解决了所有文件里的冲突之后，对每个文件使用 git add 命令来将其标记为冲突已解决。 一旦暂存这些原本有冲突的文件，Git 就会将它们标记为冲突已解决。
