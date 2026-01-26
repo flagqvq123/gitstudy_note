@@ -120,3 +120,10 @@ git在推送时不会把标签自动push。需要显式地推送。
 - git的别名是简单的命令替换，用aliname替代后面的command
 - 可以用来给旧命令起别名，也可以用来给组合命令形成新命令：使用`git config --global alias.<aliname> '<commands>'`
 - 对于外部命令的别名，在命令前加入'!'符号，例如`git config --global alias.visual '!gitk'`,这样就可以用`git visual`来执行`gitk`命令了。
+
+# Day 3
+## 分支
+- 分支的本质： 一个指向“commit”对象的指针
+`git branch <name>` -> 创建一个分支
+`git checkout <name>` -> 切换到某个分支
+
